@@ -14,7 +14,8 @@ class ProductManager{
             stock
         }
         const repeatedCode = this.products.findIndex(product => product.code === code)
-        // return repeatedCode
+        //Si el codigo de producto NO esta repetido, lo agregara al array
+        //de lo contrario devolvera un error
         if(repeatedCode === -1){
             this.products.push(newProduct)
         }else{
@@ -27,13 +28,14 @@ class ProductManager{
     }
 
     getProductById(id){
+        //Busca el id ingresado por el usuario entre los elementos de la clase "products"
+        //si encuentra una coincidencia, la devolvera por consola, de lo contrario dirá "Not found"
         const idCoincidence = this.products.findIndex(evento => evento.id === id)
         if(idCoincidence === -1){
             return "Not found"
         }else{
             return this.products[idCoincidence]
         }
-
     }
 }
 
