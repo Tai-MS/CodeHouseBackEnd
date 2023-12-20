@@ -13,6 +13,10 @@ class ProductManager{
             code,
             stock
         }
+        //Si alguno de los campos esta vacio, devuelve un error
+        if(!title || !description || !price || !thumbnail || !code || !stock){
+            return "All fields must be filled"
+        }
         const repeatedCode = this.products.findIndex(product => product.code === code)
         //Si el codigo de producto NO esta repetido, lo agregara al array
         //de lo contrario devolvera un error
@@ -41,6 +45,7 @@ class ProductManager{
 
 const productManager = new ProductManager()
 console.log(productManager.getProducts());
+console.log(productManager.addProduct( "Este es un producto de prueba", 200, "Sin imagen", "abc123",25 ));
 console.log(productManager.addProduct("producto prueba", "Este es un producto de prueba", 200, "Sin imagen", "abc123",25 ));
 console.log(productManager.getProducts());
 console.log(productManager.addProduct("producto prueba", "Este es un producto de prueba", 200, "Sin imagen", "abc123",25 ));
