@@ -1,3 +1,4 @@
+const { json } = require('express/lib/response')
 const fs = require('fs')
 const { title } = require('process')
 
@@ -28,15 +29,27 @@ class ProductManager{
             //Transforme el array en formato JSON
             //Luego modifica el archivo .JSON
             let newProductStr = JSON.stringify(this.products, null, 2)
-            fs.promises.writeFile(this.path, newProductStr)
+            fs.writeFileSync(this.path, newProductStr)
+            return 'Product added'
         }else{
             return "Error. The product code already exists"
         }
     }
 
-    getProducts(){
+    getProducts() {
+        try {
+            const data = fs.readFileSync(this.path)
+    
+            this.products = JSON.parse(data)
+            console.log("Archivo leido");
+        } catch (error) {
+            console.error("Error al leer el archuvo")
+            if(error.errno === -4058) console.error("El archivo no existe")
+            else console.error(error)
+        }
         return this.products
     }
+
 
     getProductById(id){
         //Busca el id ingresado por el usuario entre los elementos de la clase "products"
@@ -91,7 +104,7 @@ class ProductManager{
                 const updatedData = data.filter(product => product.id !== id);
                 //Reescribe el JSON con los productos que quedaran en él
                 await fs.promises.writeFile(this.path, JSON.stringify(updatedData, null, 2));
-                console.log(this.products);
+                // console.log(this.products);
                 return `Product with the ID ${id} succesfully deleted`;
             } catch (error) {
                 return `Error deleting the product. Error: ${error}`;
@@ -103,8 +116,10 @@ class ProductManager{
 const productManager = new ProductManager()
 console.log(productManager.getProducts())
 console.log(productManager.addProduct("producto prueba", "Este es un producto de prueba", 200, "Sin imagen", "abc123", 25));
+console.log(productManager.addProduct("producto prueba", "Este es un producto de prueba", 200, "Sin imagen", "abc123", 25));
 console.log(productManager.addProduct("segundo producto prueba", "Este es el segundo producto de prueba", 400, "Sin imagen", "def456", 50));
-console.log(productManager.getProducts());
+console.log("----------------------------------- \n Test getProducts\n-----------------------------------");
+console.log(productManager.getProducts())
 console.log("----------------------------------- \n Test getProductById\n-----------------------------------");
 console.log(productManager.getProductById(1));
 console.log(productManager.getProductById(3));
