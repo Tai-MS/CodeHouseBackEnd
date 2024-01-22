@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "title": "chiunga",
+    "description": "213",
+    "code": "dd",
+    "price": "100",
+    "statu": true,
+    "stock": "100",
+    "category": "saludos",
+    "thumbnail": "hola"
+  },
+  {
+    "id": 2,
+    "title": "hsdfa",
+    "description": "saludo",
+    "code": "ddd",
+    "price": "100",
+    "statu": true,
+    "stock": "100",
+    "category": "saludos",
+    "thumbnail": "hola"
+  },
+  {
+    "id": 4,
+    "title": "hsdfa",
+    "description": "saludo",
+    "code": "dddsd",
+    "price": "100",
+    "statu": true,
+    "stock": "100",
+    "category": "saludos",
+    "thumbnail": "hola"
+  },
+  {
+    "id": 5,
+    "title": "hsdfa",
+    "description": "saludo",
+    "code": "dddsddd",
+    "price": "100",
+    "statu": true,
+    "stock": "100",
+    "category": "saludos",
+    "thumbnail": "hola"
+  },
+  {
+    "id": 6,
+    "title": "hsdfa",
+    "description": "saludo",
+    "code": "d",
+    "price": "100",
+    "statu": true,
+    "stock": "100",
+    "category": "saludos",
+    "thumbnail": "hola"
+  },
+  {
+    "id": 7,
+    "title": "hsdfa",
+    "description": "saludo",
+    "code": "aad",
+    "price": "100",
+    "statu": true,
+    "stock": "100",
+    "category": "saludos",
+    "thumbnail": "hola"
+  },
+  {
+    "id": 8,
+    "title": "hsdfa",
+    "description": "saludo",
+    "code": "aadd",
+    "price": "100",
+    "statu": true,
+    "stock": "100",
+    "category": "saludos",
+    "thumbnail": "hola"
+  },
+  {
+    "id": 9,
+    "title": "hsdfa",
+    "description": "saludo",
+    "code": "aaddd",
+    "price": "100",
+    "statu": true,
+    "stock": "100",
+    "category": "saludos",
+    "thumbnail": "hola"
+  },
+  {
+    "id": 10,
+    "title": "hsdfa",
+    "description": "dwdasd",
+    "code": "aadsaddd",
+    "price": "100",
+    "statu": true,
+    "stock": "100",
+    "category": "saludos",
+    "thumbnail": "hola"
+  },
+  {
+    "id": 10,
+    "title": "nuevo",
+    "description": "saludo",
+    "code": "ddaa",
+    "price": "100",
+    "statu": false,
+    "stock": 1000,
+    "category": "product",
+    "thumbnail": null
+  }
+]
