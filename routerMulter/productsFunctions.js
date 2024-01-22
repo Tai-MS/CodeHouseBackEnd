@@ -1,9 +1,10 @@
-import fs, { writeFileSync } from 'fs'
+import fs from 'fs'
 
 class ProductManager{
     constructor(){
         this.products = []
         this.path = './routerMulter/public/products.json'
+        this.counter = 1
     }
 
     //Funcion que se asegura de que el JSON existe,
@@ -23,8 +24,15 @@ class ProductManager{
     addProduct(title, description, code, price, statu = true, stock, category, thumbnail = null){
         //Si logra leer el JSON, guardara la informacion en las constantes ya parseada
         if(this.readJson() === true){
+            
             const data = fs.readFileSync(this.path, 'utf-8')
             const parsedData = JSON.parse(data)
+
+            //Busca el ID mas alto para que sea el valor a partir del cual se incrementa el 
+            //numero de ID en un nuevo producto
+            const maxId = Math.max(...parsedData.map(product => product.id));
+
+            this.counter = maxId + 1;
 
             //Indica los campos que son obligatorios
             if (!title || !description || !code || !price || !stock || !category) {
@@ -37,7 +45,7 @@ class ProductManager{
             //Si no existe el codigo, se agregara un nuevo objeto al array y al JSON
             if(repeatedCode === -1){
                 const newProduct = {
-                    id: parsedData.length + 1,
+                    id: this.counter,
                     title,
                     description,
                     code,
@@ -146,9 +154,11 @@ class ProductManager{
 
             //Guarda la nueva informacion en el JSON y devuelve un respuesta
             await fs.promises.writeFile(this.path, JSON.stringify(newArr, null, 2))
-            return `Product with the ID ${id} has been removed`
+            
+            return  `Product with the ID ${id} has been removed`
         }
     }
+    
 }
 
 const productManager = new ProductManager()
